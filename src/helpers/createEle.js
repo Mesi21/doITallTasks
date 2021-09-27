@@ -1,5 +1,4 @@
-const createEle = (eleType, eleClass, eleId, eleTxt = null) => 
-{
+const createEle = (eleType, eleClass, eleId, eleTxt = null) => {
   const newEle = document.createElement(eleType);
   newEle.className = eleClass;
   newEle.id = eleId;
