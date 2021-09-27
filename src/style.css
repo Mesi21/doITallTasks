@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   width: 80%;
-  background-color: rgb(221, 221, 221); 
+  background-color: rgb(221, 221, 221);
 }
 
 h1,
@@ -85,5 +85,5 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(236, 236, 236);;
+  background-color: rgb(236, 236, 236);
 }

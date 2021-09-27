@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
@@ -11,19 +10,19 @@ const tasks = [
   {
     description: 'task 1',
     completed: false,
-    index: 0
+    index: 0,
   },
   {
     description: 'task 2',
     completed: false,
-    index: 1
+    index: 1,
   },
   {
     description: 'task 3',
     completed: false,
-    index: 2
+    index: 2,
   },
-]
+];
 
 const displayTasks = () => {
   const mainArea = createTaskArea();

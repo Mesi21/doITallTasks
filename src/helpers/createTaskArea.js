@@ -1,4 +1,4 @@
-import createEle from "./createEle.js";
+import createEle from './createEle.js';
 
 const createTaskArea = () => {
   const taskArea = document.getElementById('main');
@@ -14,6 +14,6 @@ const createTaskArea = () => {
   taskArea.appendChild(header);
   taskArea.appendChild(add);
   return taskArea;
-}
+};
 
 export default createTaskArea;
