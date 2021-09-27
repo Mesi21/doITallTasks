@@ -28,6 +28,7 @@ const tasks = [
 const displayTasks = () => {
   const mainArea = createTaskArea();
   const list = createEle('ul', 'todos', 'list-todos', null);
+  const clearAllFinished = createEle('div', null, 'clear', 'Clear all completed');
   tasks.forEach((task) => {
     const row = createEle('li', null, `task-${task.index}`, null);
     const label = createEle('label', null, null, task.description);
@@ -36,12 +37,14 @@ const displayTasks = () => {
     input.setAttribute('type', 'checkbox');
     input.setAttribute('value', task.description);
     label.htmlFor = `${task.index}`;
-    row.appendChild(label);
     row.appendChild(input);
+    row.appendChild(label);
     row.appendChild(dots);
     list.appendChild(row);
   });
+  clearAllFinished.setAttribute('id', 'clear');
   mainArea.appendChild(list);
+  mainArea.appendChild(clearAllFinished);
   return mainArea;
 };
 
