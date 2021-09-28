@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import createEle from './helpers/createEle.js';
 import createTaskArea from './helpers/createTaskArea.js';
+import toggleCheck from './helpers/toggleCheck.js';
 
 class ToDo {
   constructor() {
@@ -56,8 +57,8 @@ class ToDo {
       input.setAttribute('type', 'checkbox');
       input.setAttribute('value', task.description);
       input.checked = task.completed;
-      input.addEventListener('change', (e) => {
-        task.completed = e.target.checked;
+      input.addEventListener('change', () => {
+        toggleCheck(input, task);
         this.localSave();
       });
       label.htmlFor = `${task.index}`;
