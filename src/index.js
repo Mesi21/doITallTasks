@@ -36,18 +36,16 @@ class ToDo {
     localStorage.setItem('AllTasks', JSON.stringify(this.tasks));
   }
 
-  // checktorageIsEmpty() {
-  //   if (localStorage.getItem('AllTasks') !== null) {
-  //     this.tasks = JSON.parse(localStorage.getItem('AllTasks'));
-  //   }
-  //   return this.task;
-  // }
-
-  displayTasks() {
-    const mainArea = createTaskArea();
+  checktorageIsEmpty() {
     if (localStorage.getItem('AllTasks') !== null) {
       this.tasks = JSON.parse(localStorage.getItem('AllTasks'));
     }
+    return this.task;
+  }
+
+  displayTasks() {
+    const mainArea = createTaskArea();
+    this.checktorageIsEmpty();
     const list = createEle('ul', 'todos', 'list-todos', null);
     const clearAllFinished = createEle('div', null, 'clear', 'Clear all completed');
     this.tasks.forEach((task) => {
@@ -61,7 +59,7 @@ class ToDo {
       input.addEventListener('change', (e) => {
         task.completed = e.target.checked;
         this.localSave();
-      })
+      });
       label.htmlFor = `${task.index}`;
       row.appendChild(input);
       row.appendChild(label);
@@ -73,8 +71,7 @@ class ToDo {
     mainArea.appendChild(list);
     mainArea.appendChild(clearAllFinished);
     return mainArea;
-  };
-
+  }
 }
 
 const todo = new ToDo();
