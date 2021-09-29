@@ -56,8 +56,18 @@ li {
   border-bottom: 2px solid rgb(236, 236, 236);
 }
 
-#submit {
+i {
+  color: green !important;
+}
+
+#add {
   width: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: none;
 }
 
 .svg-inline--fa {

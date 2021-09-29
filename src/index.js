@@ -6,31 +6,11 @@ import '@fortawesome/fontawesome-free/js/brands';
 import createEle from './helpers/createEle.js';
 import createTaskArea from './helpers/createTaskArea.js';
 import toggleCheck from './helpers/toggleCheck.js';
+import createTask from './helpers/createTask.js';
 
 class ToDo {
   constructor() {
-    this.tasks = [
-      {
-        description: 'task1',
-        completed: false,
-        index: 0,
-      },
-      {
-        description: 'task2',
-        completed: false,
-        index: 1,
-      },
-      {
-        description: 'task3',
-        completed: false,
-        index: 2,
-      },
-      {
-        description: 'task4',
-        completed: false,
-        index: 3,
-      },
-    ];
+    this.tasks = [];
   }
 
   localSave() {
@@ -46,6 +26,8 @@ class ToDo {
 
   displayTasks() {
     const mainArea = createTaskArea();
+    const eleToAdd = document.getElementById('to-add');
+    const newTaskToAdd = document.getElementById('add');
     this.checktorageIsEmpty();
     const list = createEle('ul', 'todos', 'list-todos', null);
     const clearAllFinished = createEle('div', null, 'clear', 'Clear all completed');
@@ -67,6 +49,12 @@ class ToDo {
       row.appendChild(dots);
       list.appendChild(row);
       this.localSave();
+    });
+    newTaskToAdd.addEventListener('click', () => {
+      createTask(this.tasks, eleToAdd.value);
+      eleToAdd.value = '';
+      this.localSave();
+      window.location.reload();
     });
     clearAllFinished.setAttribute('id', 'clear');
     mainArea.appendChild(list);
