@@ -2,6 +2,7 @@ body {
   margin: 0 auto;
   width: 80%;
   background-color: rgb(221, 221, 221);
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h1,
@@ -31,17 +32,24 @@ li {
 li {
   list-style-type: none;
   border-bottom: 2px solid rgb(236, 236, 236);
-  padding-left: 50px;
+  padding: 0 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 50px;
+}
+
+.row-input {
+  width: 85%;
+  border: none;
+  font-weight: 600;
+  font-style: normal ;
 }
 
 #header-ele {
   display: flex;
-  padding: 0 50px;
+  padding: 0 20px;
   align-items: center;
   height: 60px;
   border-bottom: 2px solid rgb(236, 236, 236);
@@ -54,10 +62,6 @@ li {
   flex-direction: row;
   align-items: center;
   border-bottom: 2px solid rgb(236, 236, 236);
-}
-
-i {
-  color: green !important;
 }
 
 #add {
@@ -84,9 +88,29 @@ i {
 }
 
 ::placeholder {
-  padding: 50px;
+  padding: 20px;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+.edited {
+  border: 3px solid black;
+  z-index: 6;
+  font-style: italic;
+}
+
+.trash {
+  background-image: url('img/trash.png');
+  background-size: cover; 
+  height: 20px;
+  width: 20px;
+}
+
+.dot {
+  background-image: url('img/more.png');
+  background-size: cover; 
+  height: 20px;
+  width: 20px;
 }
 
 #clear {

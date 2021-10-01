@@ -7,6 +7,7 @@ import createEle from './helpers/createEle.js';
 import createTaskArea from './helpers/createTaskArea.js';
 import toggleCheck from './helpers/toggleCheck.js';
 import createTask from './helpers/createTask.js';
+import editEle from './helpers/editEle.js';
 
 class ToDo {
   constructor() {
@@ -17,7 +18,7 @@ class ToDo {
     localStorage.setItem('AllTasks', JSON.stringify(this.tasks));
   }
 
-  checktorageIsEmpty() {
+  checkstorageIsEmpty() {
     if (localStorage.getItem('AllTasks') !== null) {
       this.tasks = JSON.parse(localStorage.getItem('AllTasks'));
     }
@@ -28,24 +29,30 @@ class ToDo {
     const mainArea = createTaskArea();
     const eleToAdd = document.getElementById('to-add');
     const newTaskToAdd = document.getElementById('add');
-    this.checktorageIsEmpty();
+    this.checkstorageIsEmpty();
     const list = createEle('ul', 'todos', 'list-todos', null);
     const clearAllFinished = createEle('div', null, 'clear', 'Clear all completed');
     this.tasks.forEach((task) => {
       const row = createEle('li', null, `task-${task.index}`, null);
-      const label = createEle('label', null, null, task.description);
-      const input = createEle('input', null, task.index, null);
-      const dots = createEle('i', 'fas fa-ellipsis-v', `dot-${task.index}`, null);
+      const taskDescript = createEle('input', 'row-input', task.index, task.description);
+      taskDescript.setAttribute('placeholder', `${task.description}`)
+      const input = createEle('input', null, `task-${task.index}`, null);
+      const dots = createEle('div', `${task.completed === true ? 'trash' : 'dot'}`, `dot-${task.index}`, null);
       input.setAttribute('type', 'checkbox');
       input.setAttribute('value', task.description);
       input.checked = task.completed;
       input.addEventListener('change', () => {
         toggleCheck(input, task);
         this.localSave();
+        window.location.reload();
       });
-      label.htmlFor = `${task.index}`;
+      taskDescript.addEventListener('click', (e) => {
+        taskDescript.placeholder = '';
+        editEle(e.target, taskDescript);
+        this.localSave();
+      })
       row.appendChild(input);
-      row.appendChild(label);
+      row.appendChild(taskDescript);
       row.appendChild(dots);
       list.appendChild(row);
       this.localSave();
