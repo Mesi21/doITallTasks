@@ -1,12 +1,11 @@
-const editEle = (lbl, inpVal) => {
-  lbl.innerHTML = '';
-  lbl.style.innerHTML = `${inpVal.value}`;
-  lbl.addEventListener('keypress', (e) => {
+const editEle = (inpField) => {
+  inpField.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-      lbl.description = e.target.value;
-    }}
-  )
-  return lbl;
+      const currDescription = e.target.value;
+      inpField.placeholder = `${currDescription}`
+    } 
+  });
+  return inpField.value;
 };
 
 export default editEle;

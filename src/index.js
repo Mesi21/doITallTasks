@@ -34,8 +34,6 @@ class ToDo {
     const clearAllFinished = createEle('div', null, 'clear', 'Clear all completed');
     this.tasks.forEach((task) => {
       const row = createEle('li', null, `task-${task.index}`, null);
-      const taskDescript = createEle('input', 'row-input', task.index, task.description);
-      taskDescript.setAttribute('placeholder', `${task.description}`)
       const input = createEle('input', null, `task-${task.index}`, null);
       const dots = createEle('div', `${task.completed === true ? 'trash' : 'dot'}`, `dot-${task.index}`, null);
       input.setAttribute('type', 'checkbox');
@@ -46,9 +44,13 @@ class ToDo {
         this.localSave();
         window.location.reload();
       });
-      taskDescript.addEventListener('click', (e) => {
-        taskDescript.placeholder = '';
-        editEle(e.target, taskDescript);
+      const taskDescript = createEle('input', 'row-input', task.index, null);
+      taskDescript.setAttribute('type', 'text')
+      taskDescript.setAttribute('placeholder', `${task.description}`)
+      taskDescript.addEventListener('click', () => {
+        const ele = editEle(taskDescript, task);
+        console.log(ele)
+        task.description = ele;
         this.localSave();
       })
       row.appendChild(input);
